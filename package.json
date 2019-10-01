@@ -5,11 +5,6 @@
   "main": "index.js",
   "license": "ISC",
   "scripts": {
-    "build": "webpack -p",
-    "start": "node server.js | bunyan",
-    "migrate": "sequelize db:migrate | bunyan",
-    "server-start": "concurrently --kill-others \"npm run server-start\" \"npm run client-start\"",
-    "client-start": "webpack -d --watch",
     "dev-start": "nodemon server.js | bunyan --output short --color"
   },
   "dependencies": {
