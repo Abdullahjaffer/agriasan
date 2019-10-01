@@ -1,0 +1,21 @@
+<ng-container>
+    <form #form="ngForm" (ngSubmit)="onSubmit(form.value)" class="mt-5">
+        <div class="form-group ">
+                <h5 class="font-weight-normal mt-2">توثیقی کوڈ درج کریں جو ہم نے ابھی آپ کو بھیجا ہے:</h5>
+                <input required minlength="4" maxlength="6" ngModel name="code" type="number" class="form-control" #Code='ngModel'>
+                <div class="alert alert-danger" *ngIf="Code.touched && !Code.valid">
+                    <div *ngIf="Code.errors.required">کوڈ درکار ہے۔</div>
+                    <div *ngIf="Code.errors.minlength">کم از کم لمبائی '6' حروف کی ہے۔</div>
+                    <div *ngIf="Code.errors.maxlength">زیادہ سے زیادہ لمبائی '30' حروف کی ہے۔</div>
+                </div>
+        </div>
+                <div class="text-center mt-5">
+                        <button type="submit" 
+                        class="border-0 btn btn-primary w-25 font-weight-normal" 
+                        >تصدیق کریں۔</button>
+                        <p class="text-primary mt-2">
+                                کوڈ حاصل نہیں کیا؟ دوبارہ بھیجیں۔
+                          </p>
+                </div>
+    </form>
+</ng-container>

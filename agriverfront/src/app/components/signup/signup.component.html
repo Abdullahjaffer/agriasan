@@ -1,0 +1,30 @@
+<div class="loginback">
+    
+</div>
+<div class="logincontent" >
+        <!-- <span class="loginclose" (click)="this.login.showSignup=false">
+                <i class="material-icons">
+                    clear
+                </i>
+        </span> -->
+        <!-- STEP ONE CHOOSE ACC TYPE -->
+    <div>
+    <div class="my-5">
+        <select type="number" [(ngModel)]="selectedacctype" 
+        (change)="cons(selectedacctype)"
+        class="select">
+            <option *ngFor="let type of acctypes" 
+            [ngValue]="type.name.english">
+            {{type.name[this.languageservice.language]}}
+        </option>
+        </select>
+        <ng-container *ngIf="selectedacctype == 'Farmer'">
+                <app-farmersignup></app-farmersignup>
+        </ng-container>
+        <ng-container *ngIf="selectedacctype == 'Agriculture Researcher'">
+                <app-researchersignup></app-researchersignup>
+        </ng-container>      
+    </div>
+    </div>
+  </div>
+<!-- FARMER END -->

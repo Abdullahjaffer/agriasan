@@ -1,0 +1,43 @@
+<div class="loginback" *ngIf= "this.login.showLogin">
+  <span class="loginclose" (click)="this.login.showLogin=false">
+      <i class="material-icons">
+          clear
+          </i>
+  </span>
+
+  <div class="logincontent">
+    <div class="alert alert-danger" *ngIf = "WrongErr">
+        آپ نے یا تو غلط پاس ورڈ یا فون نمبر درج کیا ہے
+        </div>
+      <form #form="ngForm" (ngSubmit)="onSubmit(form.value)">  
+        
+        <h5 class="font-weight-normal mt-2">فون نمبر درج کریں۔</h5>
+              <div class="english">
+                  <international-phone-number 
+                  ngModel
+                  placeholder="Enter phone number" 
+                  [defaultCountry]="'pk'" 
+                  [required]="true" 
+                  #phone_number="ngModel" 
+                  name="phone_number"
+                  ></international-phone-number>
+              </div>
+              <div class="alert alert-danger" *ngIf="phone_number.touched && !phone_number.valid">
+                <div>درست نمبر درج کریں۔</div>
+              </div>
+    
+    
+              <div class="form-group ">
+                <h5 class="font-weight-normal mt-2">پاس ورڈ</h5>
+                <input required minlength="6" maxlength="30" ngModel name="Password" type="password" class="form-control" #Password='ngModel'>
+                <div class="alert alert-danger" *ngIf="Password.touched && !Password.valid">
+                    <div *ngIf="Password.errors.required">پاس ورڈ کی ضرورت ہے۔</div>
+                    <div *ngIf="Password.errors.minlength">کم سے کم لمبائی '8' حرف ہے۔</div>
+                    <div *ngIf="Password.errors.maxlength">زیادہ سے زیادہ لمبائی '30' حروف کی ہے۔</div>
+                </div>
+              </div>
+    
+                  <button class="btn btn-primary" [disabled]="!phone_number.valid || !Password.valid">جمع کرائیں</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,84 @@
+<div class="border shadow cardmargin p-3">
+  <div class="row">
+    <div class="col-md-6">
+      <p>
+        <span class="font-weight-light text-secondary text-capitalize">پوسٹ کیا گیا: </span>
+        <span class="text-capitalize">{{da.userid.fullname}}</span>
+      </p>
+    </div>
+    <div class="col-md-6 text-md-right">
+      <p class="text-secondary font-weight-light">
+        {{ formattedDate(da.createdAt) }}
+      </p>
+    </div>
+    <div class="col-12">
+      <img src={{this.imageurl}} class="cardimg" *ngIf="this.imageurl">
+    </div>
+    <div class="col-12">
+      <div class="question" style="word-break: break-all">
+          سوال:  {{this.question}}
+      </div>
+      <div class="description" style="word-break: break-all">
+          {{this.description}} <span class="text-primary pointer">
+              [...]
+      </span>
+      </div>
+    </div>
+    <div class="col-12 bg-light border-top">
+     <div class="question" style="word-break: break-all">
+        بہترین حل:
+     </div>
+        <div class="description">
+          ljslknflsanlanlksndlansld <span class="text-primary pointer">
+              [...]
+      </span>
+        </div>
+    </div>
+    <div class="col-4 text-center border py-2 pointer">
+      <span *ngIf = "!this.liked" (click)= "likequestion()">
+          <i class="fa fa-thumbs-o-up text-secondary" aria-hidden="true" style="font-size: 22px"></i>
+          <span class="text-secondary" style="font-size: 22px">
+              پسند 
+          </span>
+      </span>
+      <span *ngIf = "this.liked" (click)="unlikeanddis()">
+          <i class="fa fa-thumbs-up text-primary" aria-hidden="true" style="font-size: 22px"></i>
+          <span class="text-primary" style="font-size: 22px">
+              پسند 
+          </span>
+      </span>
+    </div>
+    <div class="col-4 text-center border py-2 pointer">
+        
+        <span *ngIf = "!this.disliked" (click)= "dislikequestion()" >
+            <i class="fa fa-thumbs-o-down text-secondary" aria-hidden="true" style="font-size: 22px"></i>
+            <span class="text-secondary" style="font-size: 22px">
+                ناپسند 
+              
+            </span>
+        </span>
+          <span *ngIf = "this.disliked" (click)="unlikeanddis()">
+            <i class="fa fa-thumbs-down text-danger" aria-hidden="true" style="font-size: 22px"></i>
+            <span class="text-danger" style="font-size: 22px">
+                ناپسند 
+            </span>
+          </span>
+       
+    </div>
+    <div class="col-4 text-center border py-2 pointer">
+      <span>
+          <i class="fa fa-share-alt text-secondary" aria-hidden="true" style="font-size: 22px"></i>
+          <span class="text-secondary" style="font-size: 22px">
+              اشتراک
+          </span>
+      </span>
+    </div>
+    <div class="col-12 text-center bg-success text-white  pointer">
+      <div class="py-1" style="font-size: 24px; font-weight: 400; margin-top: 10px;">
+        <a routerLink='/post/{{this.da._id}}' style="text-decoration: none; color: white;">
+          پوسٹ دیکھیں
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

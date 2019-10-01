@@ -1,0 +1,28 @@
+@import url(https://fonts.googleapis.com/earlyaccess/notonaskharabic.css);
+
+html, body { height: 100%; word-break: break-all }
+body { margin: 0; font-family:'Noto Naskh Arabic' , Roboto, "Helvetica Neue", sans-serif; }
+.urdu{
+    font-family: 'Noto Naskh Arabic', Roboto, "Helvetica Neue", sans-serif;;
+    direction: rtl;
+    text-align: right
+}
+.english{
+    font-family: 'Noto Naskh Arabic' ,Roboto, "Helvetica Neue", sans-serif;
+    direction: ltr;
+    text-align: left
+}
+.cardmargin{
+    margin: 15px;
+}
+.question{
+    margin-top: 5px;
+    font-size: larger;
+    font-weight: 500;
+}
+.answer{
+    margin-top: 5px;
+}
+.pointer{
+    cursor: pointer;
+}

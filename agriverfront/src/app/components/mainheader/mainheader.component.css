@@ -1,0 +1,31 @@
+.loginback{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.95);
+    width: 100vw;
+    height: 100vh;
+    z-index: 1021;
+}
+.loginclose{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1025;
+    font-size: 32px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.logincontent{
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%,-50%);
+    z-index: 1025;
+}
+.nav-link{
+    cursor: pointer !important;
+}
+.pretty{
+    margin-top: 20px;
+}

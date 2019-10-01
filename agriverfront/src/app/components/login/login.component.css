@@ -1,0 +1,36 @@
+.loginback{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.95);
+    width: 100vw;
+    height: 100vh;
+    z-index: 1021;
+    background-image: url("../../../assets/2417075.svg");
+    background-color: #cccccc;
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.loginclose{
+    position: absolute;
+    top: 3%;
+    right: 3%;
+    z-index: 1025;
+    font-size: 32px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.logincontent{
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%,-50%);
+    z-index: 1025;
+    max-width: 500px;
+    min-width: 350px;
+}

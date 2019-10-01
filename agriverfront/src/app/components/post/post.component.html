@@ -1,0 +1,115 @@
+<ng-container *ngIf="this.data">
+    <div class="row m-0 p-2">
+        <div class="border p-2 w-100">
+                <div class="d-inline-block">
+                    <img src= {{this.data.userid.profilepic}} 
+                    style="width: 70px; height: 70px; border-radius: 50%;" 
+                    align="top">
+                  </div>
+                  <div class="d-inline-block" style="margin-left: 10px;" >
+                    <div style="font-size: 20px;" class="text-capitalize">
+                        {{this.data.userid.fullname}}
+                    </div>
+                    <div class="text-secondary font-weight-light">
+                        شامل ہوئے {{formattedDate(this.data.userid.createdAt)}}
+                    </div>
+                  </div>
+        </div>
+        <div class="border p-2 w-100 mt-2">
+          <h4>سوال: <br><span class="font-weight-normal">{{question}}</span> </h4>
+        </div>
+        <div class="border p-2 w-100 mt-2">
+        <ng-container *ngIf="this.data.images">
+            <div class="row m-0">
+                <div class="col-9 text-center">
+                        <img src= {{this.data.images[0]}} style="width: 100%; max-width: 500px;">
+                </div>
+                <div class="col-3 text-center">
+                  <div *ngFor="let images of this.data.images">
+                      <img src= {{images}} style="width: 100%; max-width: 200px;">
+                  </div>
+                </div>
+                </div>
+        </ng-container>
+        </div>
+        <div class="border p-2 w-100 mt-2">
+          <h4>تفصیل<span class="font-weight-light">{{description}}</span> </h4>
+        </div>
+        <div class="row m-0 w-100">
+            <div class="col-4 text-center border py-2 pointer">
+                <span *ngIf = "!this.liked" (click)= "likequestion()">
+                    <i class="fa fa-thumbs-o-up text-secondary" aria-hidden="true" style="font-size: 22px"></i>
+                    <span class="text-secondary" style="font-size: 22px">
+                        پسند 
+                    </span>
+                </span>
+                <span *ngIf = "this.liked" (click)="unlikeanddis()">
+                    <i class="fa fa-thumbs-up text-primary" aria-hidden="true" style="font-size: 22px"></i>
+                    <span class="text-primary" style="font-size: 22px">
+                        پسند 
+                    </span>
+                </span>
+              </div>
+              <div class="col-4 text-center border py-2 pointer">
+                  
+                  <span *ngIf = "!this.disliked" (click)= "dislikequestion()" >
+                      <i class="fa fa-thumbs-o-down text-secondary" aria-hidden="true" style="font-size: 22px"></i>
+                      <span class="text-secondary" style="font-size: 22px">
+                          ناپسند 
+                        
+                      </span>
+                  </span>
+                    <span *ngIf = "this.disliked" (click)="unlikeanddis()">
+                      <i class="fa fa-thumbs-down text-danger" aria-hidden="true" style="font-size: 22px"></i>
+                      <span class="text-danger" style="font-size: 22px">
+                          ناپسند 
+                      </span>
+                    </span>
+                 
+              </div>
+              <div class="col-4 text-center border py-2 pointer">
+                <span>
+                    <i class="fa fa-share-alt text-secondary" aria-hidden="true" style="font-size: 22px"></i>
+                    <span class="text-secondary" style="font-size: 22px">
+                        اشتراک
+                    </span>
+                </span>
+              </div>
+        </div>
+        <div class="border p-2 w-100 mt-2">
+            <h4>تبصرہ لکھیں...</h4>
+            <div>
+              <form #form="ngForm" (ngSubmit)="onSubmit(form.value)">  
+                <div class="form-group ">
+                    <textarea
+                    required 
+                    minlength="15" 
+                    maxlength="300" 
+                    ngModel 
+                    name="Comment" 
+                    class="form-control" 
+                    #Comment='ngModel' 
+                    rows="5"
+                    >
+                    </textarea>
+                    <button class="btn btn-primary mt-2 float-right" *ngIf="this.auth.isLoggedin">تبصرہ</button>
+                </div>
+              </form>
+            </div>
+              <div class="alert alert-danger" *ngIf = "!this.auth.isLoggedin">
+                  برائے کرم لاگ ان کریں
+              </div>
+
+        </div>
+        <div class="border p-2 w-100 mt-2">
+          <h4>
+              تبصرے
+          </h4>
+          <app-commentcard 
+          *ngFor="let comment of comments" 
+          [comment] = 'comment'
+          >
+          </app-commentcard>
+        </div>
+      </div>
+</ng-container>

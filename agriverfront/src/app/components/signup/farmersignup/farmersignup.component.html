@@ -1,0 +1,54 @@
+<ng-container *ngIf="!verificationWindow">
+    <form #form="ngForm" (ngSubmit)="onSubmit(form.value)">
+        <div class="form-group">
+                <h5 class="font-weight-normal mt-4">نام درج کریں</h5>
+                <input required minlength="6" maxlength="30" ngModel name="Name" type="text" class="form-control" #Name='ngModel'>
+                <div class="alert alert-danger" *ngIf="Name.touched && !Name.valid">
+                    <div *ngIf="Name.errors.required">نام کی ضرورت ہے۔</div>
+                    <div *ngIf="Name.errors.minlength">کم سے کم لمبائی '8' حرف ہے۔</div>
+                    <div *ngIf="Name.errors.maxlength">زیادہ سے زیادہ لمبائی '30' حروف کی ہے۔</div>
+                </div>
+        </div> 
+    <h5 class="font-weight-normal mt-2">فون نمبر درج کریں۔</h5>
+    <div class="english">
+            <international-phone-number 
+            ngModel
+            placeholder="Enter phone number" 
+            [defaultCountry]="'pk'" 
+            [required]="true" 
+            #phone_number="ngModel" 
+            name="phone_number"
+            (change)="cons(phone_number)"
+            ></international-phone-number>
+    </div>
+    <div class="alert alert-danger" *ngIf="phone_number.touched && !phone_number.valid">
+            <div>ایک درست نمبر درج کریں۔</div>
+        </div>
+        <div class="alert alert-danger" *ngIf="phonenumberErr">
+            <div>نمبر پہلے سے موجود یا غلط ہے۔</div>
+        </div>
+        <div class="form-group ">
+            <h5 class="font-weight-normal mt-2">پاس ورڈ</h5>
+            <input required minlength="8" maxlength="30" ngModel name="Password" type="password" class="form-control" #Password='ngModel'>
+            <div class="alert alert-danger" *ngIf="Password.touched && !Password.valid">
+                <div *ngIf="Password.errors.required">پاس ورڈ کی ضرورت ہے۔</div>
+                <div *ngIf="Password.errors.minlength">کم سے کم لمبائی '8' حرف ہے۔</div>
+                <div *ngIf="Password.errors.maxlength">زیادہ سے زیادہ لمبائی '30' حروف کی ہے۔</div>
+            </div>
+        </div>
+    <div class="text-right mt-5">
+            <button type="submit" class="border-0 text-secondary" 
+            style="background-color: transparent; cursor: pointer;"
+            [disabled]="!phone_number.valid || !Password.valid || !Name.valid"
+            >اگلے
+                <i class="material-icons text-secondary" style="vertical-align:middle;">
+                    keyboard_arrow_right
+                    </i>
+            </button>
+    </div>
+     
+   </form>
+</ng-container>
+<ng-container *ngIf="verificationWindow">
+    <app-verification [data]='form'></app-verification>
+</ng-container>

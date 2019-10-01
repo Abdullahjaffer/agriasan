@@ -1,0 +1,35 @@
+<div class="container-fluid p-0">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+        <a class="navbar-brand" href="#"><img src="../../../assets/Agriverx Logo icon.png" height="40px;" /></a>
+        <ul class="navbar-nav ml-auto">
+          <!-- <li>
+              <div class="pretty p-switch p-fill">
+                  <input type="checkbox" [(ngModel)]="languageCheck" (change)='cons(languageCheck)' />
+                  <div class="state">
+                      <label class="text-light">اردو میں تبدیل کریں۔</label>
+                  </div>
+              </div>
+          </li> -->
+          <ng-container *ngIf='!this.auth.isLoggedin'>
+              <li class="nav-item">
+                <span class="nav-link btn btn-primary border-none text-white mx-2" (click)="this.login.showLogin=true; this.login.showSignup=false">لاگ ان</span>
+              </li>
+              <li class="nav-item ">
+                <span class="nav-link btn btn-secondary border-none text-white mx-2" routerLink='/signup'>سائن اپ</span>
+              </li>
+          </ng-container>
+          <ng-container *ngIf='this.auth.isLoggedin'>
+              <li class="nav-item" ngbDropdown display="dynamic" placement="bottom-right">
+                <a class="nav-link text-capitalize" style="cursor: pointer" ngbDropdownToggle id="navbarDropdown3" role="button">
+                  <img src={{this.auth.profilepic()}} style="width: 40px; height: 40px; border-radius: 50%">
+                  {{this.auth.name()}}
+                </a>
+                <div ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu">
+                  <a class="dropdown-item" (click)="logout()" style="cursor: pointer;">لاگ آوٹ
+                    </a>
+                </div>
+              </li>
+          </ng-container>
+        </ul>
+      </nav>
+</div>

@@ -1,0 +1,33 @@
+<div style="position: sticky; top: 0; left: 0; z-index: 1000">
+        <form #form="ngForm" (ngSubmit)="onSubmit(form.value)">  
+        
+                <div class="p-3 bg-light text-center">
+                        <div class="form-group d-inline">
+                                <input required ngModel name="query" type="query" class="form-control d-inline" #query='ngModel'
+                                style="width: 75%">
+                        </div>
+                        <button class="btn d-inline text-center" [disabled]="!query.valid">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                        </button>
+                        <button routerLink='/addpost' class="btn btn-success">
+                                <span class="mr-2 font-weight-normal">
+                                                پوچھیں
+                                </span> <i class="fa fa-comment" aria-hidden="true"></i>
+                        </button>
+                </div>
+                <div class="alert alert-danger" *ngIf="query.touched && !query.valid">
+                        <div *ngIf="query.errors.required">کچھ لکھیں</div>
+                </div>
+            </form>
+</div>
+
+<div class="row m-0" *ngIf="this.lengthBased() == true">
+        <app-card 
+        *ngFor="let da of data" 
+        [da] = 'da'
+        class="col-md-4 p-0"
+        ></app-card>
+</div>
+<div *ngIf="this.lengthBased() == false">
+                ظاہر کرنے کے لئے کوئی نتیجہ نہیں
+</div>

@@ -1,0 +1,55 @@
+<div class="row m-0 row-eq-height">
+  <div class="col-2 bg-dark text-light" style="text-align:center">
+    <div style="max-width: 150px;">
+      <div class=" py-3">
+        <img src={{this.comment.userid.profilepic}} style="width: 100%; max-width: 80px; border-radius: 50%" >
+        <h6 class="font-weight-norrmal text-capitalize">
+          <div class="font-weight-light">
+              پوسٹ کیا گیا:
+          </div>
+          {{this.comment.userid.fullname}}
+        </h6>
+        <div>
+          <span class="font-weight-light">
+              وقت سے ممبر
+          </span>
+          <br>
+          {{formattedDate(this.comment.userid.createdAt)}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-8 bg-light">
+    <div class=" p-3" style="font-size: 20px;">
+      {{this.comment.text.english}}
+    </div>
+  </div>
+  <div class="col-2 bg-dark text-light py-4" style="text-align:center">
+      <div style="max-width: 150px;">
+        <div>
+            <i class="fa fa-angle-up" aria-hidden="true" style="font-size: 22px; cursor: pointer;"
+            *ngIf = "!this.liked" (click)= "likequestion()"
+            ></i>
+            <i class="fa fa-angle-up text-success" aria-hidden="true" 
+            style="font-size: 22px; font-weight: 800; cursor: pointer;"
+            *ngIf = "this.liked" (click)="unlikeanddis()"
+            ></i>
+        </div>
+        <div>
+          <h3 class="font-weight-normal mt-2 text-success">
+            + {{this.likecount}}
+          </h3>
+          <h3 class="font-weight-normal mt-1 text-danger">
+            - {{this.dislikecount}}
+            </h3>
+        </div>
+        <div>
+            <i class="fa fa-angle-down" aria-hidden="true" style="font-size: 22px; cursor: pointer;"
+            *ngIf = "!this.disliked" (click)= "dislikequestion()"></i>
+            <i class="fa fa-angle-down text-danger" aria-hidden="true" 
+            style="font-size: 22px; font-weight: 800; cursor: pointer;"
+            *ngIf = "this.disliked" (click)="unlikeanddis()"></i>
+        </div>
+      </div>
+    </div>
+</div>
