@@ -25,5 +25,8 @@ export class VerificationComponent implements OnInit {
       console.log(err)
     })
   }
+  getCode(){
+    window.open(`/api/v1/public/user/getcode/+923217502248`, "_blank");
+  }
 
 }

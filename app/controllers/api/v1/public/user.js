@@ -134,14 +134,18 @@ module.exports =  function(router){
         })
       })
       router.get('/getcode/:number',(req,res)=>{
+          console.log(req.params.number)
         Verify.findOne({phonenumber:req.params.number},(err, obj)=>{
             if(err){
-                res.status(400).send("NOT FOUND")
+                res.status(400).send(err)
             }
-            if(obj !== null){
+            if(obj == null){
                 res.status(400).send('NOT FOUND')
             }else{
-                res.status(201).send(obj)
+                let x = obj.toObject()
+                x = x['code']
+                console.log(x)
+                res.status(201).send(x.toString())
             }
         })
       })
