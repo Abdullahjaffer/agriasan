@@ -136,14 +136,10 @@ module.exports =  function(router){
       router.get('/getcode/:number',(req,res)=>{
         User.findOne({phonenumber:req.params.number},(err, obj)=>{
             if(err){
-                res.status(400).send({
-                    message: 'failed'
-                })
+                res.status(400).send("NOT FOUND")
             }
             if(obj !== null){
-                res.status(400).send({
-                    message: 'failed'
-                })
+                res.status(400).send('NOT FOUND')
             }else{
                 res.status(201).send(obj)
             }
