@@ -29,7 +29,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
 
-app.use(express.static(__dirname + '/dist/agriverfront')); // set the static files location /public/img will be /img for users
+app.use(express.static(__dirname + '/dist/build')); // set the static files location /public/img will be /img for users
 
 
 global.log = require('./app/lib/logger');
