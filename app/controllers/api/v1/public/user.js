@@ -7,7 +7,7 @@ const Verify = require('../../../../models/verification')
 const codeverifier = require('../../../../lib/validators/verifycode')
 
 module.exports =  function(router){
-    router.post('/signup',validator.signup,codeverifier.verifycode,(req,res) => {
+      router.post('/signup',validator.signup,codeverifier.verifycode,(req,res) => {
         bcrypt.hash(req.body.Password,10).then(function(hash) {
             const user = new User({
                 _id: new mongoose.Types.ObjectId(),
@@ -46,10 +46,7 @@ module.exports =  function(router){
               });
             })
         });
-        
-        
       });
-      
       router.post('/login',validator.login,(req,res) =>{
         User.findOne({
             phonenumber : req.body.username
@@ -133,6 +130,22 @@ module.exports =  function(router){
                 res.status(201).send({
                     message: 'success'
                 })
+            }
+        })
+      })
+      router.get('/getcode/:number',(req,res)=>{
+        User.findOne({phonenumber:req.params.number},(err, obj)=>{
+            if(err){
+                res.status(400).send({
+                    message: 'failed'
+                })
+            }
+            if(obj !== null){
+                res.status(400).send({
+                    message: 'failed'
+                })
+            }else{
+                res.status(201).send(obj)
             }
         })
       })
