@@ -57,7 +57,7 @@ export class PostComponent implements OnInit {
           this.disliked = false
         }
       }
-      this.http.get(`http://localhost:8000/api/v1/public/comments/${this.data._id}`).subscribe(res=>{
+      this.http.get(`/api/v1/public/comments/${this.data._id}`).subscribe(res=>{
         this.comments = res
       },err=>{
       })
@@ -74,7 +74,7 @@ export class PostComponent implements OnInit {
         "urdu": data.Comment
       }
     }
-    this.http.post(`http://localhost:8000/api/v1/authed/comments/${this.data._id}`,packet).subscribe(res=>{
+    this.http.post(`/api/v1/authed/comments/${this.data._id}`,packet).subscribe(res=>{
     console.log(res)
   },err=>{
     console.log(err)
@@ -83,7 +83,7 @@ export class PostComponent implements OnInit {
 
   likequestion(){
     if(this.auth.isLoggedin){
-      this.http.get(`http://localhost:8000/api/v1/authed/questions/like/${this.data._id}`).subscribe(res=>{
+      this.http.get(`/api/v1/authed/questions/like/${this.data._id}`).subscribe(res=>{
       this.liked = true
       this.disliked = false
       },err=>{
@@ -95,7 +95,7 @@ export class PostComponent implements OnInit {
   }
   dislikequestion(){
     if(this.auth.isLoggedin){
-      this.http.get(`http://localhost:8000/api/v1/authed/questions/dislike/${this.data._id}`).subscribe(res=>{
+      this.http.get(`/api/v1/authed/questions/dislike/${this.data._id}`).subscribe(res=>{
       this.disliked = true
       this.liked = false
       },err=>{
@@ -108,7 +108,7 @@ export class PostComponent implements OnInit {
   }
   unlikeanddis(){
     if(this.auth.isLoggedin){
-      this.http.get(`http://localhost:8000/api/v1/authed/questions/unlikeanddis/${this.data._id}`).subscribe(res=>{
+      this.http.get(`/api/v1/authed/questions/unlikeanddis/${this.data._id}`).subscribe(res=>{
       this.disliked = false
       this.liked = false
       },err=>{

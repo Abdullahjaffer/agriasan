@@ -26,7 +26,7 @@ export class FarmersignupComponent implements OnInit {
            this.form = Object.assign({}, pos, data);
            this.form = {...this.form, type: 'Farmer'}
            console.log(this.form)
-           this.http.post(`http://localhost:8000/api/v1/public/user/addverify`,{phonenumber: this.form.phone_number}).subscribe(obj=>{
+           this.http.post(`/api/v1/public/user/addverify`,{phonenumber: this.form.phone_number}).subscribe(obj=>{
            this.verificationWindow = true
           },err=>{
 
