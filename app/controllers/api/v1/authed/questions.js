@@ -68,7 +68,7 @@ module.exports =  function(router){
         })
     });
     router.put('/:postid',(req,res)=>{
-        if(req.body.text.english && req.body.text.english ){
+        if(req.body.question.english && req.body.question.urdu ){
             Question.findOneAndUpdate({ _id : req.params.postid , userid : req.userData._id , likes : { $size : 0}},
                 {$set:{
                     question: {
