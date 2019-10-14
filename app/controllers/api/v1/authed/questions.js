@@ -69,7 +69,7 @@ module.exports =  function(router){
     });
     router.put('/:postid',(req,res)=>{
         if(req.body.question.english && req.body.question.urdu ){
-            Question.findOneAndUpdate({ _id : req.params.postid , userid : req.userData._id , likes : { $size : 0}},
+            Question.findOneAndUpdate({ _id : req.params.postid , userid : req.userData._id},
                 {$set:{
                     question: {
                         english : req.body.question.english,
@@ -80,7 +80,7 @@ module.exports =  function(router){
                         urdu : req.body.description.urdu
                       }
                 }}, {new: true}, (err, doc) => {
-                if (err || !doc) {
+                if (err) {
                     res.status(401).json({
                         message : err
                     })
