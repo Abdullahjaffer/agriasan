@@ -47,21 +47,22 @@ module.exports =  function(router){
     
     router.put('/:postid',(req,res)=>{
         if(req.body.text.english && req.body.text.english ){
-            Comment.findOneAndUpdate({ _id : req.params.postid , userid : req.userData._id , likes : { $size : 0}},
+            Comment.findOneAndUpdate({ _id : req.params.postid , userid : req.userData._id},
                 {$set:{
                     text: {
                         english : req.body.text.english,
                         urdu : req.body.text.urdu
                       }
                 }}, {new: true}, (err, doc) => {
-                if (err || !doc) {
+                if (err) {
                     res.status(401).json({
                         message : err
                     })
                 }
                 else
                 res.status(200).json({
-                    message : "success"
+                    message : "success",
+                    data: doc
                 })
             });
         }
