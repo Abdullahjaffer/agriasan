@@ -71,9 +71,13 @@ module.exports =  function(router){
         if(req.body.text.english && req.body.text.english ){
             Question.findOneAndUpdate({ _id : req.params.postid , userid : req.userData._id , likes : { $size : 0}},
                 {$set:{
-                    text: {
-                        english : req.body.text.english,
-                        urdu : req.body.text.urdu
+                    question: {
+                        english : req.body.question.english,
+                        urdu : req.body.question.urdu
+                      },
+                      description:{
+                        english : req.body.description.english,
+                        urdu : req.body.description.urdu
                       }
                 }}, {new: true}, (err, doc) => {
                 if (err || !doc) {
