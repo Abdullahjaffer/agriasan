@@ -21,7 +21,7 @@
     "@types/node": "^12.6.8",
     "angular2-template-loader": "^0.6.2",
     "awesome-typescript-loader": "^5.2.1",
-    "bootstrap": "4.1.1",
+    "bootstrap": "4.3.1",
     "bcrypt": "^3.0.6",
     "bluebird": "^3.5.5",
     "bunyan": "^1.8.12",
